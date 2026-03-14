@@ -6,7 +6,6 @@ import { skillSchema, type SkillFormData } from "@/lib/validations"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
-import { Slider } from "@/components/ui/slider"
 import { useState } from "react"
 import { Loader2 } from "lucide-react"
 import type { Skill } from "@/lib/types"
@@ -30,13 +29,11 @@ export default function SkillForm({
       ? {
           category: defaultValues.category,
           name: defaultValues.name,
-          proficiency: defaultValues.proficiency,
           order_index: defaultValues.order_index,
         }
       : {
           category: "",
           name: "",
-          proficiency: 80,
           order_index: 0,
         },
   })
@@ -49,8 +46,6 @@ export default function SkillForm({
       setLoading(false)
     }
   }
-
-  const proficiency = form.watch("proficiency")
 
   return (
     <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
@@ -83,28 +78,6 @@ export default function SkillForm({
               {form.formState.errors.name.message}
             </p>
           )}
-        </div>
-
-        {/* Proficiency */}
-        <div className="space-y-3 md:col-span-2">
-          <div className="flex items-center justify-between">
-            <Label>Proficiency</Label>
-            <span className="text-xs text-[#00ff41] tabular-nums font-bold">
-              {proficiency}%
-            </span>
-          </div>
-          <Slider
-            value={[proficiency]}
-            onValueChange={([val]) => form.setValue("proficiency", val)}
-            min={0}
-            max={100}
-            step={5}
-          />
-          <div className="flex justify-between text-[9px] text-muted-foreground tracking-wider">
-            <span>BEGINNER</span>
-            <span>INTERMEDIATE</span>
-            <span>EXPERT</span>
-          </div>
         </div>
 
         {/* Order Index */}

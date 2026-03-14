@@ -66,21 +66,9 @@ export default async function SkillsPage() {
                     key={skill.id}
                     className="px-5 py-3 hover:bg-secondary/20 transition-colors scanline-hover"
                   >
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between">
                       <span className="text-xs font-medium">{skill.name}</span>
-                      <div className="flex items-center gap-3">
-                        <span className="text-[10px] text-[#00ff41] tabular-nums font-bold">
-                          {skill.proficiency}%
-                        </span>
-                        <SkillActions skill={skill} />
-                      </div>
-                    </div>
-                    {/* Progress bar */}
-                    <div className="w-full h-1 bg-border/50 overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-[#00d4ff] to-[#00ff41] transition-all duration-700"
-                        style={{ width: `${skill.proficiency}%` }}
-                      />
+                      <SkillActions skill={skill} />
                     </div>
                   </div>
                 ))}

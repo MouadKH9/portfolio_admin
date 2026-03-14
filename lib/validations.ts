@@ -14,7 +14,6 @@ export const projectSchema = z.object({
 export const skillSchema = z.object({
   category: z.string().min(1, "Category is required"),
   name: z.string().min(1, "Skill name is required"),
-  proficiency: z.number().int().min(0).max(100).default(80),
   order_index: z.number().int().default(0),
 })
 
